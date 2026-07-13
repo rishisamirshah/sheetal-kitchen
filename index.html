@@ -93,6 +93,27 @@
   @media(max-width:520px){.store ul{columns:1}}
   h2.section{font-family:var(--serif);font-size:26px;margin:46px 0 16px;scroll-margin-top:120px;
     border-bottom:1px solid var(--line);padding-bottom:8px}
+  /* week menu */
+  .days{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+  .day{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:14px;padding:15px 16px;position:relative}
+  .day.today{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .day .dow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+  .day .dish{font-family:var(--serif);font-size:18px;margin:4px 0 6px}
+  .day .em{font-size:22px;position:absolute;top:13px;right:14px}
+  .day p{margin:0;font-size:12.5px;color:var(--mut)}
+  .day a.jump{color:var(--accent);font-size:12px;text-decoration:none}
+  .badge-today{display:inline-block;background:var(--accent);color:#1a1006;font-size:10px;font-weight:700;
+    padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:middle}
+  /* checklist */
+  .checkgrp{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:14px}
+  .checkgrp h5{margin:0 0 10px;font-family:var(--serif);font-size:18px}
+  .check{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:14px;cursor:pointer;border-bottom:1px dashed var(--line)}
+  .check:last-child{border-bottom:none}
+  .check input{margin-top:3px;width:17px;height:17px;accent-color:var(--accent);flex:none}
+  .check .why{display:block;color:var(--mut);font-size:12px}
+  .check.done span.txt{text-decoration:line-through;opacity:.5}
+  .urgent{color:var(--accent);font-weight:700}
   /* wide tables */
   .invwrap{overflow-x:auto}
   table.inv{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
@@ -118,14 +139,14 @@
     section.recipe{padding:20px 16px 18px}
     section.recipe h2{font-size:25px}
     h2.section{font-size:23px;scroll-margin-top:170px}
-    section.recipe,.tip{scroll-margin-top:170px}
+    section.recipe,.tip,.day,.checkgrp{scroll-margin-top:170px}
     .twocol{gap:16px}
     table.inv th,table.inv td{padding:8px 8px}
     ol.steps li{padding-left:36px}
   }
   @media(max-width:380px){
     h1{font-size:32px}
-    .card{padding:14px}
+    .card,.day{padding:14px}
   }
 </style>
 </head>
@@ -143,6 +164,8 @@
     <input id="q" type="text" placeholder="Search recipes, ingredients, tips…">
   </label>
   <nav class="tabs">
+    <a class="tab" href="#week">This Week</a>
+    <a class="tab" href="#list">Shop List</a>
     <a class="tab" href="#recipes">Recipes</a>
     <a class="tab" href="#plating">Plating</a>
     <a class="tab" href="#tips">Tips</a>
@@ -152,8 +175,127 @@
 
 <main>
 
+  <!-- THIS WEEK -->
+  <h2 class="section" id="week" style="margin-top:14px">This Week <span style="font-size:14px;color:var(--mut);font-weight:400">· Mon Jul 13 – Sun Jul 19</span></h2>
+  <div class="days">
+    <div class="day today">
+      <span class="em">🌮</span>
+      <div class="dow">Tonight · Mon Jul 13 <span class="badge-today">making now</span></div>
+      <div class="dish">Folded Taquitos + chipotle-yogurt dip</div>
+      <p>Lettuce on the side. <b>While they cook: marinate tomorrow's burger slabs</b> — 2 extra minutes tonight = 15-min dinner tomorrow.</p>
+      <p style="margin-top:6px"><a class="jump" href="#r-taquitos">recipe →</a></p>
+    </div>
+    <div class="day">
+      <span class="em">🍔</span>
+      <div class="dow">Tue Jul 14 · out in the evening</div>
+      <div class="dish">Paneer Tikka Burgers</div>
+      <p>Pre-marinated → broil 5–7 min, toast buns, build. ~15 min total. Reserve some creamy tikka sauce for Wednesday.</p>
+      <p style="margin-top:6px"><a class="jump" href="#r-burger">recipe →</a></p>
+    </div>
+    <div class="day">
+      <span class="em">🫓</span>
+      <div class="dow">Wed Jul 15</div>
+      <div class="dish">Paneer Tikka Flatbreads</div>
+      <p>Same marinade + sauce system as the burgers — if you saved sauce Tuesday, the spread's already done. Don't skip the pre-toast.</p>
+      <p style="margin-top:6px"><a class="jump" href="#r-flatbread">recipe →</a></p>
+    </div>
+    <div class="day">
+      <span class="em">🧆</span>
+      <div class="dow">Thu Jul 16</div>
+      <div class="dish">Falafel Wraps</div>
+      <p>Falafel warm + low in the pizza maker, chopped salad small, hummus + white sauce, roll tight.</p>
+      <p style="margin-top:6px"><a class="jump" href="#r-falafel">recipe →</a></p>
+    </div>
+    <div class="day">
+      <span class="em">🍜</span>
+      <div class="dow">Fri Jul 17</div>
+      <div class="dish">Chili-Garlic Noodles + crispy tofu</div>
+      <p>Your rule: sauce ×1.5–2, heavy on the chili garlic sauce.</p>
+      <p style="margin-top:6px"><a class="jump" href="#r-noodles">recipe →</a></p>
+    </div>
+    <div class="day">
+      <span class="em">🍝</span>
+      <div class="dow">Sat–Sun · flex</div>
+      <div class="dish">Leftovers / Gochujang Pink Pasta</div>
+      <p>You already own 100% of the pasta (Brami ×2, Rao's, gochujang, cottage cheese, broccoli) — the zero-buy backup.</p>
+      <p style="margin-top:6px"><a class="jump" href="#r-pasta">recipe →</a></p>
+    </div>
+  </div>
+
+  <!-- SHOP LIST -->
+  <h2 class="section" id="list">This Week's Shopping Run <span style="font-size:13px;color:var(--mut);font-weight:400">· Jul 13</span></h2>
+  <p style="color:var(--mut);font-size:13.5px;margin:-6px 0 16px">Tap to check off — saves on your phone. TJ first, Sprouts for paneer, Target only for gaps.</p>
+
+  <div class="checkgrp">
+    <h5>🌮 Tonight — taquitos</h5>
+    <label class="check"><input type="checkbox"><span class="txt">Corn tortillas, small <span class="why">6–8 for tonight (or flour for softer)</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Black beans, canned <span class="why">1–2 cans</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Shredded Mexican blend <span class="why">or Monterey Jack / cheddar</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Chipotle sauce (bottled) <span class="why">for the dip — Target has it if TJ doesn't</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Romaine, pre-washed <span class="why">taquito side + burgers + falafel</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>🍔🫓 Burgers + Flatbreads (one system)</h5>
+    <label class="check"><input type="checkbox"><span class="txt urgent">Tikka masala sauce ×2 jars <span class="why" style="color:var(--mut);font-weight:400">you have NONE — it's the marinade, the spread &amp; the flatbread sauce</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Burger buns <span class="why">brioche or potato</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Pepper jack slices <span class="why">melts on the patty</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Flatbread crusts ×2 <span class="why">Wed</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Lite shredded mozzarella <span class="why">flatbreads (+ future pizza)</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Grape/cherry tomatoes ×2 tubs <span class="why">flatbreads + falafel salad</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Fresh basil <span class="why">flatbread finish — add after baking</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Slicing tomato <span class="why">burger — seed it</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Red onion <span class="why">quick-pickle for burgers</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Yellow onions ×2 <span class="why">flatbread dice + noodles</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>🧆 Falafel wraps</h5>
+    <label class="check"><input type="checkbox"><span class="txt">Frozen falafel balls <span class="why">freezer aisle, 3 per wrap</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Chili onion hummus <span class="why">the family favorite</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Flour tortillas <span class="why">also next taquito round</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">1 small cucumber <span class="why">small ONLY — big one's leftover goes bad (Sheetal)</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>🍜 Noodles</h5>
+    <label class="check"><input type="checkbox"><span class="txt">Squiggly Knife Cut noodles ×2 <span class="why">Sheetal said get 2 packs</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Super Firm High-Protein Tofu <span class="why">16 oz block</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt urgent">Chili garlic sauce <span class="why" style="color:var(--mut);font-weight:400">you're OUT — core of the sauce; Huy Fong at Sprouts if TJ misses</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Chili Onion Crunch (oil jar) <span class="why">yours is the dry seasoning — the sauce wants the oil crunch</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Red bell peppers ×2 <span class="why">noodles + flatbread</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Shredded carrots <span class="why">½ cup in the stir-fry</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Green onions <span class="why">topping</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Toasted sesame oil <span class="why">not in your pantry list — 2 tsp per batch</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>🔁 Restock</h5>
+    <label class="check"><input type="checkbox"><span class="txt">TJ frozen garlic cubes <span class="why">6 left, you use 4 per noodle batch</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Fage 0%, 1 more tub <span class="why">5 recipes draw on it this week</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Vegetable broth, 1 box <span class="why">Sheetal's pending noodle-soup recipe</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>🌱 Sprouts</h5>
+    <label class="check"><input type="checkbox"><span class="txt urgent">Paneer ×2 blocks <span class="why" style="color:var(--mut);font-weight:400">~200g burgers + ~225g flatbreads — fancy cheese section</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Fallbacks if TJ missed <span class="why">chili garlic sauce · pepper jack · sesame oil</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>🎯 Target — only if gaps</h5>
+    <label class="check"><input type="checkbox"><span class="txt">Chipotle sauce <span class="why">most reliable spot for a bottled one</span></span></label>
+  </div>
+
+  <div class="checkgrp">
+    <h5>⚠️ Confirm at home first</h5>
+    <label class="check"><input type="checkbox"><span class="txt">Neutral / olive oil <span class="why">not in your inventory list — noodles need 2 tbsp, flatbread brush 1 tsp</span></span></label>
+    <label class="check"><input type="checkbox"><span class="txt">Cornstarch <span class="why">crispy tofu coating — had it in June, not listed today</span></span></label>
+  </div>
+  <div class="note" style="max-width:760px"><b>Already covered — don't buy:</b> milk · butter · Rao's · microwave basmati ×5 · frozen broccoli ×2 · kalamata · cottage cheese ×3 · cane sugar (works as the brown sugar) · gochujang · soy · rice vinegar · Brami ×2 · Thai wheat noodles ×1.</div>
+
   <!-- QUICK CARDS -->
-  <h2 class="section" id="recipes" style="margin-top:14px">The Recipes</h2>
+  <h2 class="section" id="recipes" style="margin-top:46px">The Recipes</h2>
   <div class="grid" id="cards">
     <div class="card" data-go="r-pasta"><div class="emoji">🍝</div><h3>Pink Sauce Protein Pasta</h3><p>Brami pasta, broccoli &amp; a blended cottage-cheese marinara. Gochujang variant included.</p><div class="meta"><span class="pill">Serves 2</span><span class="pill">~15 min</span></div></div>
     <div class="card" data-go="r-chili"><div class="emoji">🌶️</div><h3>Chilli Paneer</h3><p>Crispy paneer with bell peppers &amp; broccoli in a glossy sweet-spicy sauce.</p><div class="meta"><span class="pill">1–2 people</span><span class="pill">+ rice bowl</span></div></div>
@@ -830,6 +972,16 @@
       const hit=!t||hay.includes(t);el.classList.toggle('hidden',!hit);if(hit)any=true;return hit;};
     recipes.forEach(test);tips.forEach(test);cards.forEach(test);
     nores.classList.toggle('hidden',any);
+  });
+  // shop-list checkboxes persist on this phone (key is per-week)
+  document.querySelectorAll('.check input').forEach((cb,i)=>{
+    const key='shop-0713-'+i;
+    cb.checked = localStorage.getItem(key)==='1';
+    cb.closest('.check').classList.toggle('done',cb.checked);
+    cb.addEventListener('change',()=>{
+      cb.closest('.check').classList.toggle('done',cb.checked);
+      localStorage.setItem(key,cb.checked?'1':'0');
+    });
   });
 </script>
 </body>
