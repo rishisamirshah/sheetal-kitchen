@@ -93,38 +93,13 @@
   @media(max-width:520px){.store ul{columns:1}}
   h2.section{font-family:var(--serif);font-size:26px;margin:46px 0 16px;scroll-margin-top:120px;
     border-bottom:1px solid var(--line);padding-bottom:8px}
-  /* week menu */
-  .days{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
-  .day{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);
-    border-radius:14px;padding:15px 16px;position:relative}
-  .day.today{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
-  .day .dow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:700}
-  .day .dish{font-family:var(--serif);font-size:18px;margin:4px 0 6px}
-  .day .em{font-size:22px;position:absolute;top:13px;right:14px}
-  .day p{margin:0;font-size:12.5px;color:var(--mut)}
-  .day a.jump{color:var(--accent);font-size:12px;text-decoration:none}
-  .badge-today{display:inline-block;background:var(--accent);color:#1a1006;font-size:10px;font-weight:700;
-    padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:middle}
-  /* inventory table */
+  /* wide tables */
   .invwrap{overflow-x:auto}
   table.inv{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
   table.inv th{text-align:left;color:var(--accent);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
     padding:8px 10px;border-bottom:1px solid var(--line)}
   table.inv td{padding:9px 10px;border-bottom:1px solid var(--line)}
   table.inv tr:hover td{background:var(--panel2)}
-  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:middle}
-  .d-red{background:#e0593f}.d-yel{background:#d9a441}.d-grn{background:#7fa66a}
-  .st{font-size:12px;color:var(--mut)}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 14px;font-size:12.5px;color:var(--mut)}
-  /* checklist */
-  .checkgrp{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:14px}
-  .checkgrp h5{margin:0 0 10px;font-family:var(--serif);font-size:18px}
-  .check{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:14px;cursor:pointer;border-bottom:1px dashed var(--line)}
-  .check:last-child{border-bottom:none}
-  .check input{margin-top:3px;width:17px;height:17px;accent-color:var(--accent);flex:none}
-  .check .why{display:block;color:var(--mut);font-size:12px}
-  .check.done span.txt{text-decoration:line-through;opacity:.5}
-  .urgent{color:var(--accent);font-weight:700}
   .hidden{display:none!important}
   footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 16px;border-top:1px solid var(--line)}
   /* scroll hint for wide tables on mobile */
@@ -143,14 +118,14 @@
     section.recipe{padding:20px 16px 18px}
     section.recipe h2{font-size:25px}
     h2.section{font-size:23px;scroll-margin-top:170px}
-    section.recipe,.day,.tip,.checkgrp{scroll-margin-top:170px}
+    section.recipe,.tip{scroll-margin-top:170px}
     .twocol{gap:16px}
     table.inv th,table.inv td{padding:8px 8px}
     ol.steps li{padding-left:36px}
   }
   @media(max-width:380px){
     h1{font-size:32px}
-    .card,.day{padding:14px}
+    .card{padding:14px}
   }
 </style>
 </head>
@@ -159,7 +134,7 @@
 <header class="hero">
   <div class="kick">Recipes from Sheetal</div>
   <h1>Sheetal's Kitchen</h1>
-  <p class="sub">High-protein, low-effort, low-calorie cooking — everything Sheetal taught you, condensed in one place instead of scrolling through texts.</p>
+  <p class="sub">High-protein, low-effort, low-calorie cooking — every recipe from Sheetal (plus Rishi originals), condensed in one place instead of scrolling through texts.</p>
 </header>
 
 <div class="bar">
@@ -168,9 +143,6 @@
     <input id="q" type="text" placeholder="Search recipes, ingredients, tips…">
   </label>
   <nav class="tabs">
-    <a class="tab" href="#week">This Week</a>
-    <a class="tab" href="#list">TJ List</a>
-    <a class="tab" href="#inventory">Inventory</a>
     <a class="tab" href="#recipes">Recipes</a>
     <a class="tab" href="#plating">Plating</a>
     <a class="tab" href="#tips">Tips</a>
@@ -180,137 +152,21 @@
 
 <main>
 
-  <!-- THIS WEEK -->
-  <h2 class="section" id="week" style="margin-top:14px">This Week's Menu <span style="font-size:14px;color:var(--mut);font-weight:400">· Jun 29 – Jul 5</span></h2>
-  <div class="days">
-    <div class="day today">
-      <span class="em">🍝</span>
-      <div class="dow">Tonight · Sun Jun 28 <span class="badge-today">making now</span></div>
-      <div class="dish">Gochujang Protein Pasta + garlic bread</div>
-      <p>Gourmet upgrade: bloom garlic + toast the gochujang, char the broccoli, finish with basil. Garlic bread from the sourdough or naan dippers.</p>
-      <p style="margin-top:6px"><a class="jump" href="#r-pasta">recipe →</a></p>
-    </div>
-    <div class="day">
-      <span class="em">🌶️</span>
-      <div class="dow">Mon Jun 29</div>
-      <div class="dish">Chilli Paneer + broccoli-paneer rice bowl</div>
-      <p>Use the <span class="urgent">open half-block paneer first</span> — it spoils soonest. Broccoli + rice + sweet chili garlic sauce.</p>
-      <p style="margin-top:6px"><a class="jump" href="#r-chili">recipe →</a></p>
-    </div>
-    <div class="day">
-      <span class="em">🍛</span>
-      <div class="dow">Tue Jun 30</div>
-      <div class="dish">Paneer Tikka Masala + naan dippers</div>
-      <p>Creamy tikka gravy (sealed paneer + tikka sauce + Fage) with your garlic naan dippers. No wrapping — way less plain than a wrap.</p>
-      <p style="margin-top:6px"><a class="jump" href="#r-tikkamasala">recipe →</a></p>
-    </div>
-    <div class="day">
-      <span class="em">🍕</span>
-      <div class="dow">Wed Jul 1</div>
-      <div class="dish">Pizza-Maker Pizza</div>
-      <p>Mozzarella + cherry tomatoes + bell peppers + basil. <span class="urgent">Need crust.</span> Skip cottage-cheese dollops (small curd) — use tapenade spots instead.</p>
-      <p style="margin-top:6px"><a class="jump" href="#r-pizza">recipe →</a></p>
-    </div>
-    <div class="day">
-      <span class="em">🥪</span>
-      <div class="dow">Thu Jul 2</div>
-      <div class="dish">High-Protein Sandwich</div>
-      <p>Sandwich Starter (or last sourdough) + tapenade + tomato + lettuce + a little mozzarella/parm. Glass of chaas.</p>
-      <p style="margin-top:6px"><a class="jump" href="#r-sandwich">recipe →</a></p>
-    </div>
-    <div class="day">
-      <span class="em">🧈</span>
-      <div class="dow">Fri Jul 3</div>
-      <div class="dish">Gochujang-Glazed Tofu Bowl <span style="font-size:11px;color:var(--accent2)">NEW</span></div>
-      <p>Your new tofu spin: crispy tofu in a gochujang-honey-soy glaze over rice with charred broccoli. Uses tofu you already have.</p>
-      <p style="margin-top:6px"><a class="jump" href="#r-tofu">base recipe →</a></p>
-    </div>
-    <div class="day">
-      <span class="em">🍽️</span>
-      <div class="dow">Sat–Sun · flex</div>
-      <div class="dish">Leftovers / repeat</div>
-      <p>10 oz pasta makes ~2 rounds, and chili paneer reheats great. Use up anything yellow/red on the tracker.</p>
-    </div>
-  </div>
-
-  <!-- TJ LIST -->
-  <h2 class="section" id="list">Trader Joe's Run</h2>
-  <p style="color:var(--mut);font-size:13.5px;margin:-6px 0 16px">Tap to check off. Only the gaps — everything else you already have.</p>
-
-  <div class="checkgrp">
-    <h5>🛒 Get TODAY (for tonight's pasta)</h5>
-    <label class="check"><input type="checkbox"><span class="txt">Gochujang <span class="why">the legit one you're already grabbing</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt urgent">Rao's marinara <span class="why" style="color:var(--mut);font-weight:400">you have none — the pink sauce needs 1 cup</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt urgent">Milk (small) <span class="why" style="color:var(--mut);font-weight:400">¼ cup for the sauce — or grab half-and-half</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Fresh garlic <span class="why">bloom it for the sauce + rub the garlic bread</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Butter <span class="why">if you're out — finishes the sauce + garlic bread</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Honey <span class="why">optional — a touch balances the gochujang heat</span></span></label>
-  </div>
-
-  <div class="checkgrp">
-    <h5>🥦 For the week</h5>
-    <label class="check"><input type="checkbox"><span class="txt">Thin pizza crust <span class="why">for Wed</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Tikka masala sauce <span class="why">only a scrape left — for the Tue wrap</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Tortillas <span class="why">running low — for wraps</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Fage 0% Greek yogurt <span class="why">+20g protein hack, creamy wrap sauce, replaces cottage cheese for eating</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Sandwich Starter bread <span class="why">thin & low-cal — you've only got 4 sourdough slices</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt">Large-curd cottage cheese <span class="why">optional — for pizza dollops/sandwich (NOT small curd — Aashay)</span></span></label>
-  </div>
-
-  <div class="checkgrp">
-    <h5>✔︎ Confirm you still have (don't auto-buy)</h5>
-    <label class="check"><input type="checkbox"><span class="txt st">Soy sauce · ketchup <span class="why">both needed for chili paneer & the gochujang wrap</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt st">Rice <span class="why">you said you had it — for the paneer & tofu bowls</span></span></label>
-    <label class="check"><input type="checkbox"><span class="txt st">Cornstarch, olive oil, Italian seasoning, chili flakes <span class="why">used last week, should be fine</span></span></label>
-  </div>
-
-  <!-- INVENTORY -->
-  <h2 class="section" id="inventory">Inventory &amp; Shelf Life <span style="font-size:13px;color:var(--mut);font-weight:400">· updated Jun 28</span></h2>
-  <div class="legend">
-    <span><span class="dot d-red"></span>Use first / spoiling</span>
-    <span><span class="dot d-yel"></span>Use this week</span>
-    <span><span class="dot d-grn"></span>Keeps a while</span>
-  </div>
-  <div class="invwrap">
-  <table class="inv">
-    <thead><tr><th>Item</th><th>Have</th><th>Best by (est.)</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td>Paneer — open ½ block</td><td>~½ block</td><td>~Jun 30</td><td><span class="dot d-red"></span><span class="st">opened — cook Mon</span></td></tr>
-      <tr><td>Fresh basil</td><td>small bunch</td><td>~Jun 29</td><td><span class="dot d-red"></span><span class="st">already wilting — use tonight</span></td></tr>
-      <tr><td>Tikka masala sauce</td><td>scrape left</td><td>finish it</td><td><span class="dot d-red"></span><span class="st">basically empty — rebuy</span></td></tr>
-      <tr><td>Tortillas</td><td>a few</td><td>~Jul 2 (or freeze)</td><td><span class="dot d-yel"></span><span class="st">low count</span></td></tr>
-      <tr><td>Bell peppers (multi-color)</td><td>in stock</td><td>~Jul 4</td><td><span class="dot d-yel"></span><span class="st">chili paneer · wrap · pizza</span></td></tr>
-      <tr><td>Cherry tomatoes</td><td>~20–30 (2 tubs)</td><td>~Jul 2</td><td><span class="dot d-yel"></span><span class="st">pizza + sandwich</span></td></tr>
-      <tr><td>Lettuce</td><td>1 head</td><td>~Jul 3</td><td><span class="dot d-yel"></span><span class="st">wraps + sandwich</span></td></tr>
-      <tr><td>Cottage cheese (small curd)</td><td>partial</td><td>~Jul 3</td><td><span class="dot d-yel"></span><span class="st">blended sauces only — won't rebuy</span></td></tr>
-      <tr><td>Paneer — sealed block</td><td>1 block</td><td>~Jul 5 (or freeze)</td><td><span class="dot d-yel"></span><span class="st">Tue wrap</span></td></tr>
-      <tr><td>Sourdough bread (freezer)</td><td>4 slices · 128 cal ea</td><td>weeks frozen</td><td><span class="dot d-grn"></span><span class="st">garlic bread / sandwich</span></td></tr>
-      <tr><td>Broccoli florets (freezer)</td><td>2 family bags</td><td>months</td><td><span class="dot d-grn"></span><span class="st">in almost everything</span></td></tr>
-      <tr><td>Garlic naan dippers (freezer)</td><td>1 pack</td><td>months</td><td><span class="dot d-grn"></span><span class="st">easy garlic bread</span></td></tr>
-      <tr><td>Tofu</td><td>2 blocks</td><td>weeks sealed</td><td><span class="dot d-grn"></span><span class="st">Fri tofu bowl</span></td></tr>
-      <tr><td>Protein pasta</td><td>10 oz (1 tub)</td><td>months</td><td><span class="dot d-grn"></span><span class="st">~2 servings</span></td></tr>
-      <tr><td>Sweet chili garlic sauce</td><td>½ bottle</td><td>months</td><td><span class="dot d-grn"></span><span class="st">chili paneer / tofu</span></td></tr>
-      <tr><td>Parmesan tapenade</td><td>good amount</td><td>weeks</td><td><span class="dot d-grn"></span><span class="st">oil-based, lasts</span></td></tr>
-      <tr><td>Mozzarella (light part-skim)</td><td>1 bag</td><td>weeks</td><td><span class="dot d-grn"></span><span class="st">pizza</span></td></tr>
-      <tr><td>Shredded parmesan</td><td>2 bags</td><td>weeks</td><td><span class="dot d-grn"></span><span class="st">stocked up</span></td></tr>
-      <tr><td>Grated parmesan</td><td>a little</td><td>weeks</td><td><span class="dot d-grn"></span></td></tr>
-      <tr><td>Pepper jack cheese</td><td>1</td><td>weeks</td><td><span class="dot d-grn"></span></td></tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="note" style="max-width:760px"><b>You confirmed you're stocked on the core ingredients.</b> Still worth grabbing: pizza crust, more tikka sauce &amp; tortillas (running low). <b>Freeze before a weekend away:</b> the sealed paneer, leftover cottage cheese, tortillas &amp; bread.</div>
-
   <!-- QUICK CARDS -->
-  <h2 class="section" id="recipes" style="margin-top:46px">The Recipes</h2>
+  <h2 class="section" id="recipes" style="margin-top:14px">The Recipes</h2>
   <div class="grid" id="cards">
     <div class="card" data-go="r-pasta"><div class="emoji">🍝</div><h3>Pink Sauce Protein Pasta</h3><p>Brami pasta, broccoli &amp; a blended cottage-cheese marinara. Gochujang variant included.</p><div class="meta"><span class="pill">Serves 2</span><span class="pill">~15 min</span></div></div>
     <div class="card" data-go="r-chili"><div class="emoji">🌶️</div><h3>Chilli Paneer</h3><p>Crispy paneer with bell peppers &amp; broccoli in a glossy sweet-spicy sauce.</p><div class="meta"><span class="pill">1–2 people</span><span class="pill">+ rice bowl</span></div></div>
     <div class="card" data-go="r-pizza"><div class="emoji">🍕</div><h3>Pizza-Maker Pizza</h3><p>Thin crust, Rao's sauce, seasoned cottage-cheese dollops &amp; veg.</p><div class="meta"><span class="pill">400°F</span><span class="pill">~5 min</span></div></div>
     <div class="card" data-go="r-sandwich"><div class="emoji">🥪</div><h3>High-Protein Sandwich</h3><p>Toasted Sandwich Starter, parmesan tapenade, cottage cheese &amp; feta.</p><div class="meta"><span class="pill">5 min</span><span class="pill">Filling</span></div></div>
     <div class="card" data-go="r-tikkamasala"><div class="emoji">🍛</div><h3>Paneer Tikka Masala</h3><p>Creamy tikka gravy with Fage — Auntie's blend trick. With naan dippers or rice. <i>+ tikka bowl variant.</i></p><div class="meta"><span class="pill">Rich</span><span class="pill">No wrapping</span></div></div>
-    <div class="card" data-go="r-chana"><div class="emoji">🫘</div><h3>Chana Masala</h3><p>Chickpeas, big protein, Instant Pot. Cheapest high-protein meal Auntie would approve.</p><div class="meta"><span class="pill">High protein</span><span class="pill">IP</span></div></div>
+    <div class="card" data-go="r-chana"><div class="emoji">🫘</div><h3>Chana Masala</h3><p>Chickpeas, big protein, one pan. Cheapest high-protein meal Auntie would approve.</p><div class="meta"><span class="pill">High protein</span><span class="pill">1 pan</span></div></div>
     <div class="card" data-go="r-wrap"><div class="emoji">🌯</div><h3>Paneer Wraps</h3><p>Two ways — gochujang creamy wrap &amp; tikka wrap. <i>Tip: fold as a quesadilla, not a burrito.</i></p><div class="meta"><span class="pill">2 versions</span></div></div>
     <div class="card" data-go="r-tofu"><div class="emoji">🧈</div><h3>Crispy Tofu Side</h3><p>Nasoya extra-firm tofu that tastes almost like chilli paneer.</p><div class="meta"><span class="pill">Side</span><span class="pill">No prep</span></div></div>
+    <div class="card" data-go="r-taquitos"><div class="emoji">🌮</div><h3>Folded Taquitos</h3><p>Black bean &amp; cheese half-moons, skillet-crisped, with a chipotle-yogurt dip.</p><div class="meta"><span class="pill">Makes 6–8</span><span class="pill">New · Jul 13</span></div></div>
+    <div class="card" data-go="r-falafel"><div class="emoji">🧆</div><h3>Falafel Wraps</h3><p>TJ frozen falafel + chili onion hummus + chopped salad + yogurt white sauce.</p><div class="meta"><span class="pill">New · Jul 13</span></div></div>
+    <div class="card" data-go="r-noodles"><div class="emoji">🍜</div><h3>Chili-Garlic Noodles</h3><p>Squiggly knife-cut noodles + crispy tofu in a chili-onion-crunch sauce. Make extra sauce.</p><div class="meta"><span class="pill">Serves 2</span><span class="pill">Rishi original</span></div></div>
+    <div class="card" data-go="r-flatbread"><div class="emoji">🫓</div><h3>Paneer Tikka Flatbreads</h3><p>Pre-toasted crusts, broiled tikka paneer, creamy tikka–cottage sauce.</p><div class="meta"><span class="pill">Makes 2</span><span class="pill">~40g protein</span><span class="pill">Rishi original</span></div></div>
   </div>
 
   <!-- FULL RECIPES -->
@@ -396,7 +252,7 @@
         <ol class="steps">
           <li><b>Prep broccoli:</b> microwave/boil 1–2 min just to soften. Keep it bright green &amp; firm — not mushy.</li>
           <li><b>Coat paneer:</b> toss cubes with 2 tbsp cornstarch, ¼ tsp black pepper, tiny splash of water — thin coating.</li>
-          <li><b>Pan-fry paneer:</b> 2–3 tbsp oil, medium heat, 4–6 min until lightly golden on a few sides. Remove. Don't over-fry or it goes chewy <i>(and over-fried paneer drinks more sauce later)</i>. <b>Easiest way: sear the block as flat slabs, then cube after — only 2 flips. See the crispy-paneer box below.</b></li>
+          <li><b>Pan-fry paneer:</b> 2–3 tbsp oil, medium heat, 4–6 min until lightly golden on a few sides. Remove. Don't over-fry or it goes chewy <i>(and over-fried paneer drinks more sauce later)</i>.</li>
           <li><b>Stir-fry veg:</b> same pan, bell peppers + broccoli, medium-high 2–3 min. Want them slightly charred, not watery. Pinch of black pepper.</li>
           <li><b>Sauce:</b> lower to medium, add 1 tbsp soy, 1½–2 tbsp chili sauce, 2 tbsp ketchup, ¼ cup water, ¼ tsp black pepper. Bubble 30–60 sec.</li>
           <li><b>Thicken:</b> stir in slurry (1 tsp cornstarch + 2 tbsp water). Sauce turns glossy &amp; slightly thick.</li>
@@ -405,7 +261,7 @@
         <p class="ratio">Sauce ratio to memorize: 2 tbsp ketchup + 2 tbsp chili sauce + 1 tbsp soy + ¼ cup water.<br>More ketchup = sweeter · more chili = spicier · more soy = saltier · more water = saucier · more slurry = thicker.</p>
         <div class="variant">
           <h4>🍚 Broccoli-Paneer Rice Bowl</h4>
-          <p style="margin:0;font-size:14px">Make rice in the Instant Pot. Sauté broccoli &amp; paneer separately. Plate rice as a <b>bed</b> and spoon the saucy paneer <b>on top</b> — don't fold it all together.</p>
+          <p style="margin:0;font-size:14px">Make rice. Sauté broccoli &amp; paneer separately. Plate rice as a <b>bed</b> and spoon the saucy paneer <b>on top</b> — don't fold it all together.</p>
         </div>
         <div class="note"><b>Keep it drenched (rice eats the sauce):</b> rice wicks up sauce and dries the paneer, especially if it sits. Fixes — ① <b>make 1.5–2× the sauce</b> so there's enough for both · ② serve rice <b>on the side / as a bed</b>, not mixed in · ③ hold back ⅓ of the sauce and toss the paneer in it <b>right before serving</b> · ④ thicken slightly (more slurry) so it clings instead of running into the rice.</div>
         <div class="note lowcal"><b>Cut the calories:</b> swap most of the frying oil for 0-cal cooking spray — Sheetal says do a <b>mix</b> of spray + a little oil so it still browns.</div>
@@ -413,10 +269,11 @@
           <h4>⭐ Crispy paneer without the tedium</h4>
           <p style="margin:0 0 8px;font-size:13.5px;color:var(--mut)">You don't need all 6 sides crispy — the sauce coats everything, so 2–3 golden faces is plenty. Pick a method:</p>
           <ol class="steps">
-            <li><b>Slab method (2 flips total):</b> sear the block as thick flat slabs, golden on both flat faces, then cut into cubes <i>after</i>. Every cube gets a crispy top &amp; bottom — no flipping individual pieces.</li>
             <li><b>Air fryer (hands-off, best for a big batch):</b> cornstarch-coated cubes + a little oil/spray, single layer, <b>400°F ~10–12 min, shake once.</b> Or oven/broiler at 425°F, flip once. Lowest calorie too.</li>
             <li><b>If you stay at the pan:</b> pat the paneer dry first · rip-hot pan, single layer, <b>don't crowd</b> · leave it <b>alone 2–3 min</b> (it releases on its own once crusted — if it's fighting you, it's not ready) · flip in rows with a wide spatula or just <b>shake/toss the pan</b> to roll them all at once.</li>
+            <li><b>No lid:</b> covering traps steam — soft, pale, gummy coating. Paneer is already cooked; you're only browning the surface, so a lid speeds up nothing.</li>
           </ol>
+          <p style="margin:8px 0 0;font-size:12.5px;color:var(--mut)">(Slab-then-cube doesn't work here — the coating goes on before frying, so cut faces would be bare.)</p>
         </div>
       </div>
     </div>
@@ -458,7 +315,7 @@
         </ol>
         <div class="variant">
           <h4>🍕 Paneer Tikka Pizza (fusion)</h4>
-          <p style="margin:0;font-size:14px">Swap the cottage cheese for tikka-marinated paneer cubes + red onion + bell peppers over a thin layer of tikka sauce, top with mozzarella, bake, then finish with a yogurt-cilantro drizzle. Two things you already make, combined.</p>
+          <p style="margin:0;font-size:14px">Swap the cottage cheese for tikka-marinated paneer cubes + red onion + bell peppers over a thin layer of tikka sauce, top with mozzarella, bake, then finish with a yogurt drizzle (no cilantro — Aashay). Two things you already make, combined.</p>
         </div>
         <div class="note"><b>Shortcut:</b> a pre-made margherita-style base means you just add toppings &amp; bake.</div>
       </div>
@@ -510,7 +367,6 @@
           <li>Garlic, minced <span>1–2 cloves</span></li>
           <li>Water <span>splash</span></li>
           <li>Kasoori methi / garam masala <span>if you have</span></li>
-          <li>Cilantro <span>garnish</span></li>
         </ul>
         <div class="note lowcal" style="margin-top:14px"><b>Protein:</b> the yogurt thickens <i>and</i> adds protein — Auntie's two-birds move. Want more? Stir in an extra ¼ cup Fage at the end.</div>
       </div>
@@ -522,7 +378,7 @@
           <li>Add the rest of the tikka sauce + a splash of water, simmer 3–4 min.</li>
           <li><b>Lower the heat</b> (important), then stir in the yogurt to make it creamy. Don't let it boil after — temper the yogurt with a spoon of hot sauce first so it won't split.</li>
           <li>Add the marinated paneer, simmer gently 3–4 min. Crush kasoori methi over the top if you have it.</li>
-          <li>Finish with cilantro, a swirl of yogurt, a touch of butter. Serve with warm naan dippers or rice.</li>
+          <li>Finish with a swirl of yogurt + a touch of butter — <b>no cilantro</b> (Aashay hates it). Serve with warm naan dippers or rice.</li>
         </ol>
         <div class="variant">
           <h4>🍚 Paneer Tikka Bowl (drier, plate-able)</h4>
@@ -546,7 +402,7 @@
           <li>Oil / butter <span>1 tbsp</span></li>
           <li>Chana masala or garam masala <span>1–2 tsp</span></li>
           <li>Cumin <span>½ tsp</span></li>
-          <li>Salt · lemon · cilantro <span>to finish</span></li>
+          <li>Salt · lemon <span>to finish</span></li>
         </ul>
         <div class="note lowcal" style="margin-top:14px"><b>Protein:</b> ~15 g per cup of chickpeas, no animal product needed. Stir in Fage at the end for a creamier, even higher-protein version.</div>
       </div>
@@ -555,12 +411,12 @@
         <ol class="steps">
           <li>Sauté cumin in oil 20 sec, add onion + ginger + garlic, cook till golden.</li>
           <li>Add tomato/curry sauce + spices, cook 3–4 min until it darkens and the oil separates.</li>
-          <li>Add chickpeas + a splash of water, simmer 8–10 min (or pressure-cook 5 min in the Instant Pot). Lightly mash a few chickpeas to thicken.</li>
-          <li>Finish with lemon + cilantro. Serve with rice or naan dippers.</li>
+          <li>Add chickpeas + a splash of water, simmer 8–10 min. Lightly mash a few chickpeas to thicken.</li>
+          <li>Finish with lemon — skip the cilantro (Aashay). Serve with rice or naan dippers.</li>
         </ol>
         <div class="variant">
           <h4>🍲 Same idea, other beans</h4>
-          <p style="margin:0;font-size:14px"><b>Rajma</b> (kidney beans) or <b>dal</b> (lentils) work the same way in the Instant Pot — set-and-forget, tons of protein. Great rotation when you want a break from paneer.</p>
+          <p style="margin:0;font-size:14px"><b>Rajma</b> (canned kidney beans) or <b>dal</b> (red lentils, ~20 min on the stove) work the same way — tons of protein. Great rotation when you want a break from paneer.</p>
         </div>
       </div>
     </div>
@@ -645,11 +501,186 @@
           <p style="margin:0 0 8px;font-size:13.5px;color:var(--mut)">2 tbsp gochujang · 1 tbsp soy · 1 tsp sweet chili garlic sauce · 1 tsp honey · 1 tsp rice vinegar (or lemon) · splash of water</p>
           <ol class="steps">
             <li>Cube Nasoya extra-firm tofu, toss in a little cornstarch, pan-crisp till golden on all sides (spray + a little oil to cut calories).</li>
-            <li>Char broccoli in the same pan; make rice in the Instant Pot.</li>
+            <li>Char broccoli in the same pan; get the rice going.</li>
             <li>Whisk the glaze, pour it in, toss 1–2 min until everything is sticky and glossy.</li>
             <li>Serve over rice, top with the broccoli, sesame seeds / extra chili flakes.</li>
           </ol>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDED TAQUITOS -->
+  <section class="recipe" id="r-taquitos" data-name="folded taquitos black bean cheese corn tortilla skillet taco seasoning smoked paprika oregano chipotle yogurt dip quesadilla half moon sheetal new">
+    <div class="rh"><h2>🌮 Black Bean &amp; Cheese Folded Taquitos</h2><span class="serves">Makes 6–8 · new from Sheetal (Jul 13)</span></div>
+    <div class="twocol">
+      <div>
+        <h4 class="lbl">Ingredients</h4>
+        <ul class="ing">
+          <li>Small corn tortillas (or flour for softer) <span>6–8</span></li>
+          <li>Black beans, canned, drained &amp; rinsed <span>1 can (15 oz)</span></li>
+          <li>Shredded Mexican blend / Monterey Jack / cheddar <span>1–1½ cups</span></li>
+          <li>TJ's taco seasoning (or 1 tsp smoked paprika) <span>1 tsp</span></li>
+          <li>Oregano <span>½ tsp</span></li>
+          <li>Salt · black pepper <span>to taste</span></li>
+          <li>Salsa <span>2–3 tbsp, optional</span></li>
+          <li>Neutral oil or butter <span>1–2 tbsp</span></li>
+        </ul>
+        <div class="subh">Chipotle-yogurt dip</div>
+        <ul class="ing">
+          <li>Greek yogurt <span>½ cup</span></li>
+          <li>Chipotle sauce (bottled) <span>2 tbsp</span></li>
+          <li>Salt <span>pinch</span></li>
+        </ul>
+        <div class="note" style="margin-top:14px"><b>Canned beans</b> while the Instant Pot's down. Sheetal's fresh-bean method for later: wash well, beans + double the water + salt, 30 min in the IP, don't open early.</div>
+      </div>
+      <div>
+        <h4 class="lbl">Method</h4>
+        <ol class="steps">
+          <li><b>Filling:</b> mash about half the beans with a fork, leave the rest whole for texture. Mix in the taco seasoning, oregano, salt + pepper (and salsa for moisture if using). Fold in the cheese.</li>
+          <li><b>Warm each tortilla 15–20 sec</b> so it's flexible and doesn't crack.</li>
+          <li>~2 tbsp filling on one half, <b>fold into a half-moon</b> (not rolled), press gently.</li>
+          <li><b>Brush the outsides with a little oil</b>, then skillet over medium: 3–4 min per side, pressing gently with the spatula, until golden and melty.</li>
+          <li><b>Extra-crispy trick:</b> stand them up on the folded edge 30–60 sec so that edge crisps and the cheese fully melts.</li>
+          <li><b>Dip:</b> stir the yogurt + chipotle sauce + pinch of salt (alt version: Taco Bell hot sauce + Italian seasoning + salt). Lettuce on the side.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FALAFEL WRAPS -->
+  <section class="recipe" id="r-falafel" data-name="falafel wraps frozen balls trader joes chili onion hummus cucumber chopped salad kalamata cherry tomato greek yogurt white sauce tortilla sheetal new">
+    <div class="rh"><h2>🧆 Falafel Wraps</h2><span class="serves">3 falafel per wrap · new from Sheetal (Jul 13)</span></div>
+    <div class="twocol">
+      <div>
+        <h4 class="lbl">Ingredients</h4>
+        <ul class="ing">
+          <li>TJ's frozen falafel balls <span>3 per wrap</span></li>
+          <li>Flour tortillas (freezer ones fine) <span>1 per wrap</span></li>
+          <li>TJ's hummus — chili onion flavor <span>to spread</span></li>
+          <li>Small cucumber, peeled <span>1 — small only</span></li>
+          <li>Lettuce <span>chopped small</span></li>
+          <li>Cherry tomatoes <span>chopped small</span></li>
+          <li>Kalamata olives <span>chopped small</span></li>
+        </ul>
+        <div class="subh">Creamy white sauce</div>
+        <ul class="ing">
+          <li>Greek yogurt <span>base</span></li>
+          <li>Salt · Italian seasoning <span></span></li>
+          <li>Any chili sauce <span>1 tsp</span></li>
+        </ul>
+        <div class="note" style="margin-top:14px"><b>Buy the small cucumber</b> — the leftover from a big one goes bad fast. The chili onion hummus is the family favorite.</div>
+      </div>
+      <div>
+        <h4 class="lbl">Method</h4>
+        <ol class="steps">
+          <li><b>Warm the falafel in the pizza maker on LOW</b> — warm all the way through without burning the outside.</li>
+          <li><b>Chopped salad:</b> lettuce, tomatoes, peeled cucumber, kalamata — everything chopped small.</li>
+          <li><b>White sauce:</b> Greek yogurt + salt + Italian seasoning + a teaspoon of chili sauce.</li>
+          <li><b>Warm the tortillas on the skillet</b> right before eating — do 4–5 at a time.</li>
+          <li><b>Build:</b> spread hummus on the tortilla, drizzle white sauce, lightly press the falafel balls with your hand and lay in 3, add the chopped salad, drizzle more white sauce (+ chili sauce if you want spicy).</li>
+          <li><b>Roll it tight.</b></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHILI GARLIC NOODLES -->
+  <section class="recipe" id="r-noodles" data-name="spicy chili garlic noodles crispy tofu squiggly knife cut trader joes chili onion crunch white pepper sesame brown sugar rice vinegar stir fry rishi original">
+    <div class="rh"><h2>🍜 Chili-Garlic Noodles with Crispy Tofu</h2><span class="serves">Full batch = dinner for 2 · ~900–950 cal/bowl · Rishi original</span></div>
+    <div class="note" style="margin:0 0 18px"><b>⭐ Rishi's rule: more sauce.</b> The amounts below are the floor — scale the whole sauce bowl 1.5–2×, and extra chili garlic sauce makes it better.</div>
+    <div class="twocol">
+      <div>
+        <h4 class="lbl">Ingredients</h4>
+        <div class="subh">Crispy tofu</div>
+        <ul class="ing">
+          <li>TJ's Super Firm High-Protein Tofu <span>1 block (16 oz)</span></li>
+          <li>Soy sauce <span>1 tbsp</span></li>
+          <li>Cornstarch <span>2 tbsp</span></li>
+          <li>White pepper <span>⅓ tsp</span></li>
+        </ul>
+        <div class="subh">Noodles + veg</div>
+        <ul class="ing">
+          <li>TJ's Squiggly Knife Cut Noodles <span>2 cakes</span></li>
+          <li>Yellow onion, chopped <span>½</span></li>
+          <li>Broccoli florets <span>1½ cups</span></li>
+          <li>Red bell pepper, sliced <span>1</span></li>
+          <li>TJ's shredded carrots <span>½ cup</span></li>
+          <li>Neutral oil <span>2 tbsp, divided</span></li>
+          <li>Cooking spray <span>as needed</span></li>
+          <li>Green onions, sliced <span>2, to top</span></li>
+        </ul>
+        <div class="subh">Sauce (scale it up ⬆)</div>
+        <ul class="ing">
+          <li>Soy sauce <span>1 tbsp</span></li>
+          <li>TJ's frozen minced garlic <span>4 cubes (or 4 cloves)</span></li>
+          <li>Chili garlic sauce <span>1½ tbsp + more</span></li>
+          <li>TJ's Chili Onion Crunch <span>1 tbsp</span></li>
+          <li>Black pepper, fresh <span>⅓ tsp</span></li>
+          <li>Brown sugar <span>2 tsp</span></li>
+          <li>Rice vinegar <span>2 tsp</span></li>
+          <li>Toasted sesame oil <span>2 tsp</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="lbl">Method</h4>
+        <ol class="steps">
+          <li><b>Prep the tofu:</b> pat very dry, cut into 1" cubes — no pressing needed. Toss with 1 tbsp soy. Stir the white pepper into the cornstarch, sprinkle over, toss until evenly coated.</li>
+          <li><b>Crisp it:</b> 1 tbsp oil in a large nonstick over medium-high. Single layer, mist the tops with spray. Undisturbed 3–4 min, then flip (spraying as you turn) until golden all over, 10–12 min total. Set aside.</li>
+          <li><b>Fork-mix the sauce</b> — no heat, no blender: soy, garlic, chili garlic sauce, Chili Onion Crunch, black pepper, brown sugar, rice vinegar, sesame oil.</li>
+          <li><b>Noodles:</b> boil per package (~4 min), drain, rinse briefly so they don't stick.</li>
+          <li><b>Stir-fry:</b> remaining 1 tbsp oil, same skillet, high heat. Onion 1–2 min, then broccoli + bell pepper + carrots until crisp-tender, ~4 min.</li>
+          <li><b>Toss:</b> pour in the sauce and let it <b>sizzle 30 sec</b> so the garlic blooms. Add noodles, toss 1–2 min until glossy. Taste — more pepper or a splash of soy if needed. Top with the crispy tofu + green onions, split into two bowls.</li>
+        </ol>
+        <div class="note"><b>No added salt on purpose</b> — soy + chili garlic + Chili Onion Crunch carry it; adjust at the very end. <b>White pepper</b> is the classic stir-fried-noodle heat — sharper and funkier than black. Two noodle cakes ≈ 700 cal total.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEER TIKKA FLATBREADS -->
+  <section class="recipe" id="r-flatbread" data-name="paneer tikka flatbread pizza broiled marinade yogurt fage cottage cheese creamy tikka sauce pre-toast crust mozzarella grape tomato basil high protein rishi original">
+    <div class="rh"><h2>🫓 Paneer Tikka Flatbread Pizzas</h2><span class="serves">Makes 2 · ~1,100 cal &amp; ~40g protein each · Rishi original</span></div>
+    <div class="twocol">
+      <div>
+        <h4 class="lbl">Ingredients</h4>
+        <div class="subh">Paneer + marinade</div>
+        <ul class="ing">
+          <li>Paneer, ¾" cubes <span>8 oz</span></li>
+          <li>Fage 0% yogurt <span>⅓ cup</span></li>
+          <li>Tikka masala sauce <span>2 tbsp (from below)</span></li>
+          <li>Minced garlic <span>1½ tsp</span></li>
+          <li>Red pepper flakes <span>½ tsp</span></li>
+        </ul>
+        <div class="subh">Creamy tikka sauce</div>
+        <ul class="ing">
+          <li>Tikka masala sauce <span>¾–1 cup total, divided</span></li>
+          <li>Low-fat cottage cheese <span>⅓ cup</span></li>
+        </ul>
+        <div class="subh">Build</div>
+        <ul class="ing">
+          <li>Flatbread crusts <span>2</span></li>
+          <li>Olive oil, to brush <span>1 tsp</span></li>
+          <li>Lite mozzarella, shredded <span>⅔ cup</span></li>
+          <li>Red bell pepper, thin-sliced <span>1</span></li>
+          <li>Yellow onion, diced <span>½ cup</span></li>
+          <li>Grape tomatoes, halved <span>¾ cup</span></li>
+          <li>Fresh basil, torn <span>12 leaves</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="lbl">Method</h4>
+        <ol class="steps">
+          <li><b>Marinate:</b> pat the paneer dry. Mix yogurt + 2 tbsp tikka sauce + garlic + pepper flakes, toss the cubes, rest 15–20 min while the oven heats to 425°F.</li>
+          <li><b>Creamy sauce:</b> blend the remaining tikka sauce with the cottage cheese until smooth — blender, or fork-mash + whisk. (Small curd is fine — it's blended.)</li>
+          <li><b>Pre-toast the crusts</b> — the step that saves the texture: brush lightly with oil (½ tsp each), bake bare 3–4 min at 425°F until just starting to crisp. No soggy middle.</li>
+          <li><b>Broil the paneer:</b> switch to high broil, foil-lined tray, 5–7 min until charred at the edges, flipping halfway. Watch it — golden → burnt happens fast.</li>
+          <li><b>Sauce</b> both crusts (oven back to 425°F), spread evenly, leave a small border.</li>
+          <li><b>Assemble</b> — split evenly across both: mozzarella first, then paneer, bell pepper, onion, tomatoes.</li>
+          <li><b>Bake 7–9 min</b> until the cheese melts and the edges are deep golden — pre-toasted crusts finish a minute or two fast.</li>
+          <li><b>Finish:</b> torn basil over both, extra pepper flakes if you want heat, slice.</li>
+        </ol>
+        <div class="note"><b>Zero-calorie flavor move:</b> rub the hot toasted crust with a cut garlic clove before saucing.</div>
+        <div class="note lowcal"><b>Per pizza:</b> ~1,100 cal · ~40g protein (crust 560 · paneer ~360 · mozz ~90 · sauce/marinade ~65 · oil ~20 · veg ~30).</div>
       </div>
     </div>
   </section>
@@ -685,13 +716,14 @@
   <!-- TIPS -->
   <h2 class="section" id="tips">Techniques &amp; Tips</h2>
   <div class="tipgrid" id="tips-grid">
+    <div class="tip" data-name="no cilantro aashay hates rule garnish basil green onion sheetal"><div class="e">🚫</div><h5>No cilantro, ever</h5><p>Aashay hates it — Sheetal's rule: don't put it in <i>anything</i>. Garnish with fresh basil or green onions instead.</p></div>
     <div class="tip" data-name="protein fage yogurt 20 grams half cup"><div class="e">💪</div><h5>Instant +20g protein</h5><p>Half a cup of Fage 0% added to any meal gives ~20g protein with zero work.</p></div>
     <div class="tip" data-name="chaas buttermilk protein drink meal"><div class="e">🥛</div><h5>Chaas with every meal</h5><p>A cup of chaas alongside a meal adds protein effortlessly — and it's good for you.</p></div>
     <div class="tip" data-name="low calorie cooking spray oil mix frying"><div class="e">🫗</div><h5>Spray + oil mix</h5><p>To cut calories when frying, mix 0-cal cooking spray with a little real oil so food still browns.</p></div>
     <div class="tip" data-name="freezer paneer cottage cheese bread tortillas vegetarian cheese"><div class="e">🧊</div><h5>Freeze it</h5><p>Going home for the weekend? Freeze leftover paneer, cottage cheese, bread &amp; tortillas so nothing spoils. Vegetarian cheeses keep a long time frozen.</p></div>
     <div class="tip" data-name="core vegetables romaine broccoli bell peppers versatile"><div class="e">🥦</div><h5>Three core veg</h5><p>Stock romaine, broccoli &amp; bell peppers — they work in pasta, any Indian gravy, pizza, and Asian food.</p></div>
     <div class="tip" data-name="paneer butter masala gravy blend curry sauce yogurt"><div class="e">🍛</div><h5>Paneer butter masala</h5><p>Blend a curry sauce with yogurt and you've got the gravy for paneer butter masala.</p></div>
-    <div class="tip" data-name="bean cheese burrito instant pot black beans delay start cheddar taco bell hot sauce"><div class="e">🫘</div><h5>Bean &amp; cheese burrito (backup)</h5><p>Black beans in the Instant Pot (water + salt, delay-start before work), tortillas, cheddar, Taco Bell hot sauce, romaine on the side.</p></div>
+    <div class="tip" data-name="bean cheese burrito canned black beans cheddar taco bell hot sauce"><div class="e">🫘</div><h5>Bean &amp; cheese burrito (backup)</h5><p>Canned black beans warmed with salt, tortillas, cheddar, Taco Bell hot sauce, romaine on the side — or make the folded taquitos instead.</p></div>
     <div class="tip" data-name="tomato seeds remove sandwich wrap watery"><div class="e">🍅</div><h5>Seed the tomatoes</h5><p>Remove tomato seeds before adding to sandwiches/wraps so they don't go watery.</p></div>
   </div>
 
@@ -708,6 +740,10 @@
       <li>Gochujang</li>
       <li>Rao's marinara</li>
       <li>Cherry tomatoes · bell peppers</li>
+      <li>Squiggly Knife Cut noodles · Chili Onion Crunch</li>
+      <li>Frozen falafel · chili onion hummus</li>
+      <li>Super Firm High-Protein Tofu</li>
+      <li>Chipotle sauce · taco seasoning</li>
     </ul>
   </div>
   <div class="store">
@@ -723,7 +759,7 @@
   <p id="noresults" class="hidden" style="text-align:center;color:var(--mut);padding:40px">No matches — try another word.</p>
 </main>
 
-<footer>Condensed from Sheetal's texts · June 2026 · made for Rishi 🧡</footer>
+<footer>Condensed from Sheetal's texts · Summer 2026 · made for Rishi 🧡</footer>
 
 <script>
   // card jump
@@ -743,16 +779,6 @@
       const hit=!t||hay.includes(t);el.classList.toggle('hidden',!hit);if(hit)any=true;return hit;};
     recipes.forEach(test);tips.forEach(test);cards.forEach(test);
     nores.classList.toggle('hidden',any);
-  });
-  // checklist toggle + persistence
-  document.querySelectorAll('.check input').forEach((cb,i)=>{
-    const key='tjlist-'+i;
-    cb.checked = localStorage.getItem(key)==='1';
-    cb.closest('.check').classList.toggle('done',cb.checked);
-    cb.addEventListener('change',()=>{
-      cb.closest('.check').classList.toggle('done',cb.checked);
-      localStorage.setItem(key,cb.checked?'1':'0');
-    });
   });
 </script>
 </body>
