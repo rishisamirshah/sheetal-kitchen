@@ -148,6 +148,45 @@
     h1{font-size:32px}
     .card,.day{padding:14px}
   }
+  /* ---- v2 UI: compact hero ---- */
+  header.hero{padding:20px 16px 12px}
+  h1{font-size:clamp(24px,5vw,36px)}
+  .sub{font-size:13px;max-width:520px}
+  @media(max-width:600px){.sub{display:none}header.hero{padding:12px 14px 8px}}
+  /* tonight banner */
+  .tonight{background:linear-gradient(135deg,rgba(224,122,63,.16),rgba(217,164,65,.07));border:1px solid var(--accent);border-radius:var(--radius);padding:18px 20px;margin:14px 0 4px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .tonight .tl{flex:1;min-width:200px}
+  .kick2{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+  .tonight h2{font-family:var(--serif);font-size:24px;margin:2px 0 0;font-weight:600}
+  .tonight .acts{display:flex;gap:9px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#1a1006;font-weight:700;font-size:14px;padding:11px 17px;border-radius:999px;border:none;cursor:pointer;text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  /* floating nav */
+  .fnav{position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:9px;z-index:60}
+  .fnav a{width:52px;height:52px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:21px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.45)}
+  .fnav a.hot{background:var(--accent);border-color:var(--accent)}
+  /* shop list v2 */
+  .listbar{display:flex;align-items:center;gap:12px;margin:0 0 14px;flex-wrap:wrap}
+  .checkgrp h5 .cnt{color:var(--mut);font-size:12.5px;font-weight:400}
+  body.hidedone .check.done{display:none}
+  body.hidedone .checkgrp.alldone{opacity:.45}
+  /* cook mode */
+  #cook{position:fixed;inset:0;background:var(--bg);z-index:100;display:none;flex-direction:column}
+  #cook.open{display:flex}
+  .cookhead{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;padding-top:calc(14px + env(safe-area-inset-top));border-bottom:1px solid var(--line)}
+  .cookhead h3{font-family:var(--serif);font-size:20px;margin:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #cookClose{width:44px;height:44px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);font-size:18px;cursor:pointer;flex:none}
+  .prog{color:var(--accent2);font-weight:700;font-size:15px;flex:none}
+  .ingtog{margin:12px 16px 0;padding:11px 16px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--ink);font-size:15px;text-align:left;cursor:pointer}
+  .cooking{margin:10px 16px 0;padding:4px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;max-height:45vh;overflow-y:auto}
+  .cooking ul.ing li{font-size:15.5px}
+  .steps-wrap{flex:1;overflow-y:auto;padding:16px 16px calc(40px + env(safe-area-inset-bottom))}
+  .cstep{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 16px 56px;margin:0 0 12px;font-size:18.5px;line-height:1.55;position:relative;cursor:pointer;-webkit-user-select:none;user-select:none}
+  .cstep .n{position:absolute;left:14px;top:15px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#1a1006;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .cstep.done{opacity:.35}
+  .cstep.done .n{background:var(--green)}
+  .rh .cookbtn{margin-left:auto;align-self:center;background:var(--chip);border:1px solid var(--line);color:var(--ink);font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer}
+  @media(max-width:600px){ol.steps li{font-size:15.5px}ul.ing li{font-size:15px}}
 </style>
 </head>
 <body>
@@ -175,45 +214,47 @@
 
 <main>
 
+  <div id="tonightSlot"></div>
+
   <!-- THIS WEEK -->
   <h2 class="section" id="week" style="margin-top:14px">This Week <span style="font-size:14px;color:var(--mut);font-weight:400">· Mon Aug 17 – Sun Aug 23 · the comeback week — 6 cooked, 1 flex</span></h2>
   <div class="days">
-    <div class="day today">
+    <div class="day" data-dates="2026-08-17" data-recipe="#r-flatbread">
       <span class="em">🫓</span>
-      <div class="dow">Tonight · Mon Aug 17 <span class="badge-today">making now</span></div>
+      <div class="dow">Mon Aug 17</div>
       <div class="dish">Paneer Tikka Flatbreads</div>
       <p>The comeback night — your OG, always a hit. Paneer block #1 from the freezer (thaw in warm water while the oven heats), fresh tikka jar, new mozz. Marinate first, pre-toast the crusts, broil till charred.</p>
       <p style="margin-top:6px"><a class="jump" href="#r-flatbread">recipe →</a></p>
     </div>
-    <div class="day">
+    <div class="day" data-dates="2026-08-18" data-recipe="#r-taquitos">
       <span class="em">🌮</span>
       <div class="dow">Tue Aug 18</div>
       <div class="dish">Folded Taquitos + chipotle-yogurt dip</div>
       <p>Proven banger. Beans ×2 + Old El Paso + the can opener that now exists. Half bag of Mexican cheese + the new one. Skillet-crisp, stand them on the fold.</p>
       <p style="margin-top:6px"><a class="jump" href="#r-taquitos">recipe →</a></p>
     </div>
-    <div class="day">
+    <div class="day" data-dates="2026-08-19" data-recipe="#r-pasta">
       <span class="em">⚪</span>
       <div class="dow">Wed Aug 19</div>
       <div class="dish">Sheetal's White-Sauce Pasta + charred broccoli</div>
       <p>Her jar, your Brami. Warm the sauce low and slow — never boil it — toss with pasta water till it coats. Crispy garlic flakes + parm on top; chili flakes on your bowl only.</p>
       <p style="margin-top:6px"><a class="jump" href="#r-pasta">recipe →</a></p>
     </div>
-    <div class="day">
+    <div class="day" data-dates="2026-08-20" data-recipe="#r-tikkamasala">
       <span class="em">🍛</span>
       <div class="dow">Thu Aug 20</div>
       <div class="dish">Paneer Tikka Masala + garlic naan dippers</div>
       <p>Paneer night #2 — jar #2, block #2. The gravy is the point: temper the Fage so it doesn't split, kasoori methi if you have it, naan dippers + rice.</p>
       <p style="margin-top:6px"><a class="jump" href="#r-tikkamasala">recipe →</a></p>
     </div>
-    <div class="day">
+    <div class="day" data-dates="2026-08-21" data-recipe="#r-noodles">
       <span class="em">🍜</span>
       <div class="dow">Fri Aug 21</div>
       <div class="dish">Chili-Garlic Noodles — Thai wheat edition</div>
       <p>On the Thai wheat noodles you actually love, crispy tofu on top. Gut-safe build: chili garlic sauce is the ONE chili element — no crunch, no flakes, no powder in the pot.</p>
       <p style="margin-top:6px"><a class="jump" href="#r-noodles">recipe →</a></p>
     </div>
-    <div class="day">
+    <div class="day" data-dates="2026-08-22,2026-08-23" data-recipe="#r-pasta">
       <span class="em">🍝</span>
       <div class="dow">Sat–Sun · flex</div>
       <div class="dish">Pink-Sauce Brami Pasta · one night off</div>
@@ -224,7 +265,8 @@
 
   <!-- SHOP LIST -->
   <h2 class="section" id="list">This Week's Shopping Run <span style="font-size:13px;color:var(--mut);font-weight:400">· Mon Aug 17</span></h2>
-  <p style="color:var(--mut);font-size:13.5px;margin:-6px 0 16px">Tap to check off — saves on your phone. One TJ run arms all six dinners. <b>First, toss at home: both cottage tubs (8/5 + 8/8), the Aug-1 milk, and sniff-test the Fage.</b></p>
+  <p style="color:var(--mut);font-size:13.5px;margin:-6px 0 10px">Tap to check off — saves on your phone. One TJ run arms all six dinners. <b>First, toss at home: both cottage tubs (8/5 + 8/8), the Aug-1 milk, and sniff-test the Fage.</b></p>
+  <div class="listbar"><button id="hb" class="btn ghost" style="font-size:13px;padding:9px 15px">🙈 Hide bought</button><span id="leftBadge" style="color:var(--accent2);font-weight:700;font-size:13px"></span></div>
 
   <div class="checkgrp">
     <h5>🫓 Tonight — flatbreads</h5>
@@ -1138,6 +1180,23 @@
 
 <footer>Insane Vegetarian Cookbook · Summer 2026 · made for Rishi 🧡</footer>
 
+<div class="fnav">
+  <a href="#" id="fnavCook" class="hot" aria-label="cook tonight">🍳</a>
+  <a href="#list" aria-label="shop list">🛒</a>
+  <a href="#" id="fnavTop" aria-label="back to top">⬆️</a>
+</div>
+
+<div id="cook">
+  <div class="cookhead">
+    <button id="cookClose" aria-label="close">✕</button>
+    <div style="flex:1;min-width:0"><div class="kick2">Cook mode · screen stays awake</div><h3 id="cookTitle"></h3></div>
+    <span id="cookProg" class="prog"></span>
+  </div>
+  <button id="ingToggle" class="ingtog">📋 Ingredients ▾</button>
+  <div id="cookIng" class="cooking hidden"></div>
+  <div id="cookSteps" class="steps-wrap"></div>
+</div>
+
 <script>
   // card jump
   document.querySelectorAll('.card[data-go]').forEach(c=>{
@@ -1157,16 +1216,126 @@
     recipes.forEach(test);tips.forEach(test);cards.forEach(test);
     nores.classList.toggle('hidden',any);
   });
-  // shop-list checkboxes persist on this phone (key is per-week)
-  document.querySelectorAll('.check input').forEach((cb,i)=>{
-    const key='shop-0817-'+i;
-    cb.checked = localStorage.getItem(key)==='1';
+  // ---- shop list: stable text-based keys + counters + hide-bought ----
+  const WEEK='0817';
+  const slugify=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,30);
+  function recount(){
+    let left=0;
+    document.querySelectorAll('.checkgrp').forEach(g=>{
+      const cbs=[...g.querySelectorAll('.check input')];
+      const done=cbs.filter(c=>c.checked).length;
+      let cnt=g.querySelector('h5 .cnt');
+      if(!cnt){cnt=document.createElement('span');cnt.className='cnt';g.querySelector('h5').appendChild(cnt);}
+      cnt.textContent=' · '+done+'/'+cbs.length;
+      g.classList.toggle('alldone',cbs.length>0&&done===cbs.length);
+      left+=cbs.length-done;
+    });
+    const badge=document.getElementById('leftBadge');
+    if(badge)badge.textContent=left===0?'all bought 🎉':left+' left';
+  }
+  document.querySelectorAll('.check input').forEach(cb=>{
+    const key='shop-'+WEEK+'-'+slugify(cb.closest('.check').querySelector('.txt').textContent);
+    cb.checked=localStorage.getItem(key)==='1';
     cb.closest('.check').classList.toggle('done',cb.checked);
     cb.addEventListener('change',()=>{
       cb.closest('.check').classList.toggle('done',cb.checked);
       localStorage.setItem(key,cb.checked?'1':'0');
+      recount();
     });
   });
+  const hb=document.getElementById('hb');
+  if(hb){
+    const applyHb=()=>{const on=localStorage.getItem('hidedone')==='1';document.body.classList.toggle('hidedone',on);hb.textContent=on?'👀 Show bought':'🙈 Hide bought';};
+    hb.addEventListener('click',()=>{localStorage.setItem('hidedone',localStorage.getItem('hidedone')==='1'?'0':'1');applyHb();});
+    applyHb();
+  }
+  recount();
+
+  // ---- cook mode ----
+  const cook=document.getElementById('cook');
+  const cookSteps=document.getElementById('cookSteps');
+  const cookIng=document.getElementById('cookIng');
+  const cookState={};
+  let wl=null,cookOpenFlag=false;
+  async function grabLock(){try{wl=await navigator.wakeLock.request('screen');}catch(e){}}
+  document.addEventListener('visibilitychange',()=>{if(cookOpenFlag&&document.visibilityState==='visible')grabLock();});
+  function openCook(sec){
+    if(!sec)return;
+    const id=sec.id;
+    document.getElementById('cookTitle').textContent=sec.querySelector('h2').textContent;
+    const col=sec.querySelector('.twocol>div');
+    cookIng.innerHTML='';
+    if(col){const cl=col.cloneNode(true);cl.querySelectorAll('.note,.variant,.lbl').forEach(n=>n.remove());cookIng.appendChild(cl);}
+    cookIng.classList.add('hidden');
+    document.getElementById('ingToggle').textContent='📋 Ingredients ▾';
+    const ol=sec.querySelector('.twocol ol.steps');
+    const lis=ol?[...ol.children]:[];
+    const done=cookState[id]||(cookState[id]=new Set());
+    const prog=()=>{document.getElementById('cookProg').textContent=done.size+'/'+lis.length;};
+    cookSteps.innerHTML='';
+    lis.forEach((li,i)=>{
+      const d=document.createElement('div');
+      d.className='cstep'+(done.has(i)?' done':'');
+      d.innerHTML='<span class="n">'+(done.has(i)?'✓':(i+1))+'</span>'+li.innerHTML;
+      d.addEventListener('click',()=>{
+        if(done.has(i)){done.delete(i);d.classList.remove('done');d.querySelector('.n').textContent=i+1;}
+        else{
+          done.add(i);d.classList.add('done');d.querySelector('.n').textContent='✓';
+          const nxt=[...cookSteps.children].find(c=>!c.classList.contains('done'));
+          if(nxt)nxt.scrollIntoView({behavior:'smooth',block:'center'});
+        }
+        prog();
+      });
+      cookSteps.appendChild(d);
+    });
+    prog();
+    cook.classList.add('open');document.body.style.overflow='hidden';cookOpenFlag=true;grabLock();
+    cookSteps.scrollTop=0;
+  }
+  document.getElementById('cookClose').addEventListener('click',()=>{
+    cook.classList.remove('open');document.body.style.overflow='';cookOpenFlag=false;
+    if(wl){wl.release().catch(()=>{});wl=null;}
+  });
+  document.getElementById('ingToggle').addEventListener('click',()=>{
+    const hid=cookIng.classList.toggle('hidden');
+    document.getElementById('ingToggle').textContent=hid?'📋 Ingredients ▾':'📋 Ingredients ▴';
+  });
+  document.querySelectorAll('section.recipe').forEach(sec=>{
+    if(!sec.querySelector('.twocol ol.steps'))return;
+    const b=document.createElement('button');b.className='cookbtn';b.textContent='👨‍🍳 Cook';
+    b.addEventListener('click',()=>openCook(sec));
+    sec.querySelector('.rh').appendChild(b);
+  });
+
+  // ---- tonight engine: auto-detect today's dinner ----
+  function todayISO(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  const tISO=todayISO();
+  let tonightCard=null;
+  document.querySelectorAll('.day[data-dates]').forEach(d=>{
+    const hit=d.dataset.dates.split(',').includes(tISO);
+    d.classList.toggle('today',hit);
+    if(hit&&!d.querySelector('.badge-today')){const b=document.createElement('span');b.className='badge-today';b.textContent='tonight';d.querySelector('.dow').append(' ',b);}
+    if(hit)tonightCard=d;
+  });
+  const slot=document.getElementById('tonightSlot');
+  if(slot){
+    if(tonightCard){
+      const dish=tonightCard.querySelector('.dish').textContent;
+      const em=(tonightCard.querySelector('.em')||{textContent:'🍽️'}).textContent;
+      const rsel=tonightCard.dataset.recipe;
+      slot.innerHTML='<div class="tonight"><div class="tl"><div class="kick2">Tonight</div><h2>'+em+' '+dish+'</h2></div><div class="acts">'+(rsel?'<button class="btn" id="cookTonight">👨‍🍳 Cook</button><a class="btn ghost" href="'+rsel+'">recipe ↓</a>':'')+'</div></div>';
+      const ct=document.getElementById('cookTonight');
+      if(ct&&rsel)ct.addEventListener('click',()=>openCook(document.querySelector(rsel)));
+    }else{
+      slot.innerHTML='<div class="tonight"><div class="tl"><div class="kick2">Tonight</div><h2>🗓️ Between menus</h2><p style="margin:4px 0 0;color:var(--mut);font-size:13.5px">New week — voice-dump the fridge to Claude and this fills itself in.</p></div></div>';
+    }
+  }
+  const fc=document.getElementById('fnavCook');
+  if(fc){
+    if(tonightCard&&tonightCard.dataset.recipe){fc.addEventListener('click',e=>{e.preventDefault();openCook(document.querySelector(tonightCard.dataset.recipe));});}
+    else fc.style.display='none';
+  }
+  document.getElementById('fnavTop').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
 </script>
 </body>
 </html>
